@@ -1,5 +1,6 @@
 #include <iostream>
 #include <Windows.h>
+#include <string>
 
 enum MyEnum
 {
@@ -43,44 +44,60 @@ MyClass::~MyClass()
 
 struct People
 {
-	int age = 0;
-	double height = 0;
-	int sizeLeg = 0;
-	std::string name;
-	bool eyes[2]{1, 1};
+	std::string selfName;
+
+	static constexpr int friendSize = 4;
+	std::string friendsName[friendSize];
+
+	void SayHello()
+	{
+		std::cout << "Меня зовут " << selfName;
+	}
+
+	void ChangeName()
+	{
+		std::string choose;
+		while (true)
+		{
+			std::cout << "Выберете друга по ид для смены имени, либо же введите 0 для смены своего имени: ";
+			std::getline(std::cin, choose, '\n');
+
+			std::cout << "Введите новое имя ";
+
+			if (std::stoi(choose)!= 0)
+			{
+				
+				std::getline(std::cin, friendsName[std::stoi(choose)], '\n');
+			}
+			else
+			{
+				std::getline(std::cin, selfName, '\n');
+			}
+		}
+
+
+	}
 };
 
 
-void Fill(People &one)
+void Fill(People &one, static int friendSize)
 {
-	std::cout << "Введите возраст" << "\n";
-	std::cin >> one.age;
+	std::cout << "Введите свое имя: ";
+	std::getline(std::cin, one.selfName, '\n');
 
-	std::cout << "Введите рост" << "\n";
-	std::cin >> one.height;
-
-	std::cout << "Введите размер ноги" << "\n";
-	std::cin >> one.sizeLeg;
-
-	std::cout << "Введите имя" << "\n";
-	std::cin >> one.name;
-
-	std::cout << "Введите наличие левого глаза(1 Есть, 0 Нету)" << "\n";
-	std::cin >> one.eyes[0];
-
-	std::cout << "Введите наличие правого глаза(1 Есть, 0 Нету)" << "\n";
-	std::cin >> one.eyes[1];
+	for (int i = 0; i < friendSize; i++)
+	{
+		std::cout << "Введите имя друга номер " << i + 1;
+		std::getline(std::cin, one.friendsName[i], '\n');
+	}
 }
 
-void Print(People one)
+void Print(People& one, static int friendSize)
 {
-	std::cout << "Результаты:" << "\n";
-	std::cout << "Возраст: " << one.age << "\n";
-	std::cout << "Рост: " << one.height << "\n";
-	std::cout << "Размер ноги: " << one.sizeLeg << "\n";
-	std::cout << "Имя:" << one.name << "\n";
-	std::cout << "Наличие левого глаза:" << one.eyes[0] << "\n";
-	std::cout << "Наличие правого глаза:" << one.eyes[1] << "\n";
+	for (int i = 0; i < friendSize; i++)
+	{
+		std::cout << "Id: " << i + 1 << "Имя: " << one.friendsName[i];
+	}
 }
 
 
@@ -90,8 +107,12 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	People one;
-	Fill(one);
-	Print(one);
+	const int friendSize = one.friendSize;
+	Fill(one, friendSize);
+	Print(one,friendSize);
+	
+	std::cout << "\n\n\n";
+	one.SayHello();
 
 	return 0;
 }
