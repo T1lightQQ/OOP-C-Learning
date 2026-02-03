@@ -1,6 +1,4 @@
-#include <iostream>
-#include <Windows.h>
-#include <string>
+#include "test.hpp"
 
 enum MyEnum
 {
@@ -113,64 +111,130 @@ union MyUnion
 //
 //};
 
+//class Drobi
+//{
+//public:
+//	
+//	void Fill()
+//	{
+//		int choose;
+//		std::cout << "Выберете способ создания дроби: 1. Десятичной 2. Ввод числителя и знаменателя\n";
+//		std::cin >> choose;
+//		
+//		if (choose == 1)
+//		{
+//			FillChooseOne();
+//		}
+//		else if (choose == 2)
+//		{
+//			FillChooseTwo();
+//		}
+//	}
+//
+//	void chooseOperation(Drobi oneDrob, Drobi twoDrob, Drobi res)
+//	{
+//		int choose;
+//
+//		std::cout << "Выберите дейсвтие: \n1. Плюс\n2. Минус\n3. Умножить\n4. Деление\n";
+//		std::cin >> choose;
+//		
+//		switch (choose)
+//		{
+//		case 1:
+//			Plus(oneDrob,twoDrob, res);
+//			break;
+//		case 2:
+//			Minus(oneDrob, twoDrob, res);
+//			break;
+//		case 3:
+//			Umnosh(oneDrob, twoDrob, res);
+//			break;
+//		case 4:
+//			Delenie(oneDrob, twoDrob, res);
+//			break;
+//		default:
+//			break;
+//		}
+//	}
+//
+//
+//
+//	double chisl, znam;
+//	int celChast = 0;
+//private:
+//	
+//	void Print(Drobi res)
+//	{
+//		system("cls");
+//		std::cout << "\n\nРезультат: \n" << "Целая часть: " << res.celChast << "\n" << "Дробная часть\n" << res.chisl << "\n____\n" << res.znam;
+//	}
+//
+//	Drobi Plus(Drobi oneDrob, Drobi twoDrob)
+//	{
+//		if (celChast != 0) { oneDrob.chisl = oneDrob.celChast * oneDrob.znam + oneDrob.chisl; }
+//
+//		res.znam = oneDrob.znam * twoDrob.znam;
+//
+//		res.chisl = (oneDrob.chisl * twoDrob.znam) + (twoDrob.chisl * twoDrob.znam);
+//		
+//		return res;
+//	}
+//
+//	Drobi Minus(Drobi oneDrob, Drobi twoDrob)
+//	{
+//		if (celChast != 0) { oneDrob.chisl = oneDrob.celChast * oneDrob.znam + oneDrob.chisl; }
+//
+//		res.znam = oneDrob.znam * twoDrob.znam;
+//
+//		res.chisl = (oneDrob.chisl * twoDrob.znam) - (twoDrob.chisl * twoDrob.znam);
+//		
+//		return res;
+//	}
+//
+//	Drobi Umnosh(Drobi oneDrob, Drobi twoDrob)
+//	{
+//		res.chisl = oneDrob.chisl * twoDrob.znam;
+//		res.znam = oneDrob.znam * twoDrob.chisl;
+//		
+//		return res;
+//	}
+//
+//	Drobi Delenie(Drobi oneDrob, Drobi twoDrob)
+//	{
+//		double temp;
+//
+//		temp = twoDrob.chisl;
+//		twoDrob.chisl = twoDrob.znam;
+//		twoDrob.znam = temp;
+//
+//		res.chisl = oneDrob.chisl * twoDrob.znam;
+//		res.znam = oneDrob.znam * twoDrob.chisl;
+//		
+//		return res;
+//	}
+//
+//	void FillChooseTwo()
+//	{
+//		std::cout << "Введите числитель: \n";
+//		std::cin >> chisl;
+//		std::cout << "Введите целую часть: \n";
+//		std::cin >> celChast;
+//		std::cout << "Введите знаменатель: \n";
+//		std::cin >> znam;
+//	}
+//
+//	void FillChooseOne()
+//	{
+//		double num;
+//		std::cout << "Введите десятичную дробь: ";
+//		std::cin >> num;
+//
+//		
+//	}
+//
+//	
+//};
 
-
-class Drobi
-{
-public:
-	
-	void Fill()
-	{
-		std::cout << "Введите числитель: ";
-		std::cin >> chisl;
-		std::cout << "Введите знаменатель: ";
-		std::cin >> znam;
-	}
-
-	void Plus(Drobi oneDrob, Drobi twoDrob, Drobi res)
-	{
-		res.znam = oneDrob.znam * twoDrob.znam;
-		res.chisl = oneDrob.chisl + twoDrob.chisl;
-		Print(res);
-	}
-
-	void Minus(Drobi oneDrob, Drobi twoDrob, Drobi res)
-	{
-		res.znam = oneDrob.znam * twoDrob.znam;
-		res.chisl = oneDrob.chisl - twoDrob.chisl;
-		Print(res);
-	}
-
-	void Umnosh(Drobi oneDrob, Drobi twoDrob, Drobi res)
-	{
-		res.chisl = oneDrob.chisl * twoDrob.znam;
-		res.znam = oneDrob.znam * twoDrob.chisl;
-		Print(res);
-	}
-
-	void Delenie(Drobi oneDrob, Drobi twoDrob, Drobi res)
-	{
-		double temp;
-
-		temp = twoDrob.chisl;
-		twoDrob.chisl = twoDrob.znam;
-		twoDrob.znam = temp;
-
-		res.chisl = oneDrob.chisl * twoDrob.znam;
-		res.znam = oneDrob.znam * twoDrob.chisl;
-		Print(res);
-	}
-
-
-
-	double chisl, znam;
-private:
-	
-	void Print(Drobi res)
-	{
-		std::cout << "Результат: \n" << res.chisl << "\n____\n" << res.znam;
-	}
-};
 
 int main()
 {
@@ -185,7 +249,7 @@ int main()
 	one.setName();
 	Print(one, friendSize);*/
 
-	Drobi oneDrob, twoDrob, res;
+	/*Drobi oneDrob, twoDrob, res;
 	int choose;
 
 	res.znam = 1;
@@ -194,26 +258,13 @@ int main()
 	oneDrob.Fill();
 	twoDrob.Fill();
 
-	std::cout << "Выберите действие\n1.+\n2.-\n3.*\n4./:5. Неправильную в правильную\n ";
-	std::cin >> choose;
+	oneDrob.chooseOperation(oneDrob, twoDrob, res);*/
 
-	switch (choose)
-	{
-	case 1:
-		oneDrob.Plus(oneDrob, twoDrob, res);
-		break;
-	case 2:
-		oneDrob.Minus(oneDrob, twoDrob, res);
-		break;
-	case 3:
-		oneDrob.Umnosh(oneDrob, twoDrob, res);
-		break;
-	case 4:
-		oneDrob.Delenie(oneDrob, twoDrob, res);
-		break;
-	default:
-		std::cout << "Error";
-	}
+
+	PrintHello();
+	
+
+	
 	
 	
 
