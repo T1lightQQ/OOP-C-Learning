@@ -1,4 +1,5 @@
-#include "test.hpp"
+//#include "test.hpp"
+#include "MyArr.hpp";
 
 enum MyEnum
 {
@@ -259,11 +260,14 @@ int main()
 	twoDrob.Fill();
 
 	oneDrob.chooseOperation(oneDrob, twoDrob, res);*/
-
-
-	PrintHello();
+	/*PrintHello();*/
 	
+	
+	MyArr arr{ 3, 1, 2 };
+	MyArr arr2(4);
 
+
+	
 	
 	
 	
