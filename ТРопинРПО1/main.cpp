@@ -266,7 +266,7 @@ int main()
 	MyArr arr{ 3, 1, 2 };
 	MyArr arr2(4);
 
-
+	std::cout << arr.toString();
 	
 	
 	

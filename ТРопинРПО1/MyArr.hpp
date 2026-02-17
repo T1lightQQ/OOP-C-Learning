@@ -5,6 +5,9 @@
 #include <iostream>
 #include <Windows.h>
 #include <span>
+#include <utility>
+#include <sstream>
+#include <algorithm>
 
 class MyArr
 {
@@ -16,9 +19,25 @@ public:
 
 	MyArr& operator= (const MyArr& originalArr);
 
+	MyArr(MyArr&& originalArr) noexcept;
+	MyArr& operator= (MyArr&& originalArr) noexcept;
+	
+	bool operator== (const MyArr& originalArr) const noexcept;
+
+	int& operator[](size_t index);
+	const int& operator[](size_t index) const;
+
+	std::string toString() const;
+
+	explicit operator bool() const noexcept;
+
+	MyArr& operator++();
+	MyArr operator++(int);
+
+	MyArr& operator+=(int value);
+	MyArr operator/ (const MyArr& name) const;
 
 	size_t size() const noexcept;
-
 
 private:
 	std::unique_ptr<int[]> ptr;
