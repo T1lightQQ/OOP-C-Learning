@@ -17,6 +17,60 @@ union MyUnion
 };
 
 
+class Animal
+{
+public:
+	void Print()
+	{
+		std::cout << "Имя: " << GetName() << "\nВозраст: " << GetAge() << "\nВес: " << GetWeight();
+		std::cout << std::endl;
+			}
+
+	std::string GetName() { return name; }
+
+	int GetAge() { return age; }
+
+	int GetWeight() { return weight; }
+
+	void SetName()
+	{
+		std::cout << "Введите имя животного: ";
+		std::cin >> name;
+	}
+
+	void SetAge()
+	{
+		std::cout << "Введите возраст животного: ";
+		std::cin >> age;
+	}
+
+	void SetWeight()
+	{
+		std::cout << "Введите вес животного: ";
+		std::cin >> weight;
+	}
+
+private:
+	std::string name;
+	int age;
+	int weight;
+};
+
+class Cat : public Animal
+{
+public:
+	using Animal::Animal;
+private:
+
+};
+
+class Dog : public Animal
+{
+public:
+	using Animal::Animal;
+private:
+
+};
 
 
 //struct People
@@ -262,15 +316,28 @@ int main()
 	oneDrob.chooseOperation(oneDrob, twoDrob, res);*/
 	/*PrintHello();*/
 	
-	
-	MyArr arr{ 3, 1, 2 };
-	MyArr arr2(4);
+	Cat cat1;
+	Dog dog1;
 
-	std::cout << arr.toString();
-	
-	
+	cat1.SetName();
+	cat1.SetAge();
+	cat1.SetWeight();
+
+	dog1.SetName();
+	dog1.SetAge();
+	dog1.SetWeight();
+
+	cat1.Print();
+	dog1.Print();
 	
 	
 
+	
+	/*MyArr arr(4);
+
+	std::cin >> arr;
+
+	std::cout << arr;*/
+	
 	return 0;
 }

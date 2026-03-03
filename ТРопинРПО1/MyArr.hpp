@@ -9,7 +9,7 @@
 #include <sstream>
 #include <algorithm>
 
-class MyArr
+class MyArr 
 {
 public:
 	explicit MyArr(size_t size);
@@ -42,8 +42,11 @@ public:
 private:
 	std::unique_ptr<int[]> ptr;
 	size_t arrSize{0};
-
 	void swap(MyArr& firstObj, MyArr& secondObj) noexcept;
+
+	friend std::istream& operator >> (std::istream& in, MyArr& obj);
 };
+
+std::ostream& operator << (std::ostream& out, const MyArr& obj);
 
 #endif

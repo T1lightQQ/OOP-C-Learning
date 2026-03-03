@@ -125,3 +125,20 @@ void MyArr::swap(MyArr& firstObj, MyArr& secondObj) noexcept
 	std::swap(firstObj.arrSize, secondObj.arrSize);
 	firstObj.ptr.swap(secondObj.ptr);
 }
+
+std::istream& operator>>(std::istream& in, MyArr& obj)
+{
+	std::span<int> items{ obj.ptr.get(), obj.arrSize };
+	for (auto& i : items)
+	{
+		in >> i;
+	}
+
+	return in;
+}
+
+std::ostream& operator<<(std::ostream& out, const MyArr& obj)
+{
+	out << obj.toString();
+	return out;
+}
